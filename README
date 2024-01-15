@@ -1,0 +1,216 @@
+The following steps initialize the current directory
+for using repo tool and fetches the repositories
+to build Linux images for the APSS (application processing subsystem)
+of the Ensemble E7 series.
+
+The Linux images can be built either in a native Linux Ubuntu 18.04
+host or inside the Ubuntu 18.04 docker container. The Linux images
+can also be built inside the Ubuntu 18.04 docker container running
+in Windows 11 OS.
+===================================================================
+
+I. For building images inside the Ubuntu 18.04 docker container:
+----------------------------------------------------------------
+1. Install git, docker, and docker.io packages in the native Linux host.
+   Please refer to https://docs.docker.com/engine/install/ to install
+   docker application specific to the native Linux host distribution.
+
+   For example in the native Ubuntu 20.04 host:
+   $ sudo apt install git docker docker.io -y
+
+2. Clone https://github.com/alifsemi/apss-build-setup repository and
+   checkout main-next branch.
+   $ git clone https://github.com/alifsemi/apss-build-setup -b main-next
+   Note: Generate Personal access tokens (classic) from
+         GitHub account -> settings -> Developer Settings ->
+         Personal access tokens -> Tokens (classic) ->
+         Generate new token (classic)
+         to clone from the above link.
+         Example: jkrishnanjanappa is https username and
+         already generated Personal access tokens (classic)
+         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 is https password.
+
+3. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
+   using the build-ubuntu-image.sh script (it takes some time to complete).
+   $ ./apss-build-setup/ubuntu-docker/build-ubuntu-image.sh
+
+4. Run the Ubuntu 18.04 docker container using the ubuntu-builder script.
+   $ ./apss-build-setup/ubuntu-docker/ubuntu-builder
+
+5. Export HTTPS_USER and HTTPS_PASSWD with https username and
+   password (already generated Personal access tokens (classic)) to clone
+   repositories from https://github.com/alifsemi.
+   Example:
+   $ export HTTPS_USER=jkrishnanjanappa
+   $ export HTTPS_PASSWD=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
+   Note: This step is needed until the repositories are private.
+
+6. Fetch the Yocto layers and Ensemble BSP layers for the build using
+   the fetch-layers.sh script.
+   $ cd apss-build-setup
+   $ sh scripts/fetch-layers.sh
+   Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+
+7. Run scripts/setup.sh to setup environment to build Linux images.
+   $ source scripts/setup.sh
+
+8. Generate Linux images for the APSS using bitbake.
+   $ bitbake alif-tiny-image
+
+7. Use xipImage, bl32.bin, devkit-e7.dtb, and
+   alif-tiny-image-devkit-e7.cramfs-xip from the
+   tmp/deploy/images/devkit-e7 to boot APSS.
+
+8. Press Ctrl+D or logout to exit from the Ubuntu 18.04 docker container.
+
+9. Run the ubuntu-builder script again to jump into the
+   Ubuntu 18.04 docker container.
+   $ ./apss-build-setup/ubuntu-docker/ubuntu-builder
+
+10.The apss-build-setup directory is shared between the native Linux host
+   and the Ubuntu 18.04 docker container. So, all files under
+   the apss-build-setup directory can also be accessible from the native
+   Linux host.
+
+
+II. On a native Linux Ubuntu 18.04 host:
+----------------------------------------
+1. Clone https://github.com/alifsemi/apss-build-setup repo and
+   checkout main-next branch.
+   $ git clone https://github.com/alifsemi/apss-build-setup -b main-next
+   Note: Generate Personal access tokens (classic) from
+         GitHub account -> settings -> Developer Settings ->
+         Personal access tokens -> Tokens (classic) ->
+         Generate new token (classic)
+         to clone from the above link.
+         Example: jkrishnanjanappa is https username and
+         already generated Personal access tokens (classic)
+         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 is https password.
+
+2. Run the host_setup.sh script to install required packages to build
+   Linux images on the host machine before running bitbake commands.
+   $ sudo apss-build-setup/scripts/host_setup.sh
+
+3. Export HTTPS_USER and HTTPS_PASSWD with https username and
+   password (already generated Personal access tokens (classic)) to clone
+   repositories from https://github.com/alifsemi.
+   Example:
+   $ export HTTPS_USER=jkrishnanjanappa
+   $ export HTTPS_PASSWD=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
+   Note: This step is needed until the repositories are private.
+
+4. Fetch the Yocto layers and Ensemble BSP layers for the build using
+   the fetch-layers.sh script.
+   $ cd apss-build-setup
+   $ sh scripts/fetch-layers.sh
+   Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+
+5. Run scripts/setup.sh to setup environment to build Linux images.
+   $ source scripts/setup.sh
+
+6. Generate Linux images for the APSS using bitbake.
+   $ bitbake alif-tiny-image
+
+7. Use xipImage, bl32.bin, devkit-e7.dtb, and
+   alif-tiny-image-devkit-e7.cramfs-xip from the
+   tmp/deploy/images/devkit-e7 directory to boot APSS.
+
+III. For building images inside the Ubuntu 18.04 docker container
+running in Windows 11 OS
+------------------------------------------------------------------
+1. Enable Virtualization Technology in the BIOS.
+   a. Restart the physical computer and press appropriate key to
+      enter BIOS setup before the primary operating system boots up.
+   b. Select,
+      - "Advanced BIOS features"
+        - "CPU feature"
+          - "Virtualization Technology"
+            - "Enabled"
+   c. Save and Exit
+
+2. Enable Hyper-V, Virtual Machine Platform, and Windows Subsystem for Linux
+   features from 'Turn Windows features on or off' section.
+   Install Docker Desktop application in Windows 11 OS.
+
+3. Start the Docker Desktop application.
+
+4. Download
+   https://github.com/alifsemi/apss-build-setup/archive/refs/heads/main-next.zip
+   file and extract the ZIP file to apss-build-setup directory.
+   Note: Generate Personal access tokens (classic) from
+         GitHub account -> settings -> Developer Settings ->
+         Personal access tokens -> Tokens (classic) ->
+         Generate new token (classic)
+         to clone from the above link.
+         Example: jkrishnanjanappa is https username and
+         already generated Personal access tokens (classic)
+         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 is https password.
+
+5. Run the Command Prompt application in Windows 11.
+
+6. Change to extracted ./apss-build-setup/windows-docker folder.
+   > cd apss-build-setup\windows-docker
+
+7. Build docker image containing Ubuntu 18.04 Linux distribution
+   using the docker-container-build.bat script. This script downloads
+   the Ubuntu 18.04 Linux distribution, installs dependent packages
+   required to build the APSS Linux images using the bitbake tool.
+   Building Ubuntu 18.04 docker image takes some time as it fetches
+   the packages from the internet.
+   > docker-container-build.bat
+
+8. Create and run the Ubuntu 18.04 docker container using
+   the docker-container-create.bat script. This script mounts/shares
+   directories and files present in the apss-build-setup directory
+   onto the /opt directory of the docker container.
+   > docker-container-create.bat
+
+9. Export HTTPS_USER and HTTPS_PASSWD with https username and
+   password (already generated Personal access tokens (classic)) to clone
+   repositories from https://github.com/alifsemi.
+   Example:
+   $ export HTTPS_USER=jkrishnanjanappa
+   $ export HTTPS_PASSWD=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
+   Note: This step is needed until the repositories are private.
+
+10.Switch to the /opt directory inside the Ubuntu 18.04 docker containe   and fetch the Yocto layers and Ensemble BSP layers for the build
+   using the fetch-layers.sh.
+   $ cd /opt
+   $ sh scripts/fetch-layers.sh
+   Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+
+11.Run the scripts/setup.sh to setup environment to build Linux images.
+   By default, the project's build directory gets created at $HOME/build.
+   $ source scripts/setup.sh
+   Note: Use the following steps to create different project's build
+   directory (build_new) at $HOME/build_new.
+   $ source scripts/setup.sh build_new
+
+12.Generate Linux images for the APSS using bitbake.
+   $ bitbake alif-tiny-image
+
+13.Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
+   alif-tiny-image-devkit-e7.cramfs-xip from the
+   tmp/deploy/images/devkit-e7 directory into the /opt directory.
+   The images copied to /opt can be accessible from the Windows 11.
+   Use them for booting.
+
+14.Press Ctrl+D or logout to exit from the Ubuntu 18.04 docker container.
+
+15.Run the docker-container-start.bat script again from the Windows 11
+   command prompt to jump into the Ubuntu 18.04 docker container.
+   > docker-container-start.bat
+
+16.Use the setup.sh from $HOME/build directory to setup environment to build
+   Linux images again.
+   $ cd $HOME/build
+   $ source setup.sh 
+
+17.Run 'docker rm ubuntu' from the Windows 11 command prompt to remove
+   the docker container.
+   Note: This will delete all the data present inside the container.
+   > docker rm ubuntu 
+
+19.Run 'docker rmi apss' from the Windows 11 command prompt to remove
+   already built Ubuntu 18.04 image from the system.
+   > docker rmi apss

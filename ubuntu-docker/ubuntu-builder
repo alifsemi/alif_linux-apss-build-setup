@@ -1,0 +1,26 @@
+#!/bin/bash
+LOCALHOME=$(echo ~)
+STAMP=$(date +%y%m%d%H%M)
+DISTRO="ubuntu"
+VERSION="18.04"
+IMAGE=apss/$DISTRO-builder:v$VERSION
+RELEASEDIR=$(dirname $(readlink -f $0))
+USER_ENVIORNMENT="--hostname $HOSTNAME \
+                 -e HOME=$LOCALHOME \
+                 -e LANG=en_US.UTF-8 \
+                 -e PGID=$(id -g) \
+                 -e PUID=$(id -u) \
+                 -e USERNAME=$USER \
+                 -e DISTRO=$DISTRO \
+                 -e VERSION=$VERSION \
+                 -e CURRENTPATH=$(pwd) \
+                 -v $RELEASEDIR/../..:$LOCALHOME \
+                 -v $LOCALHOME/.git/:$LOCALHOME/.git/ \
+		 --privileged -v /dev:/dev \
+"
+
+sudo docker run -it \
+    --name $DISTRO-$VERSION-$STAMP \
+    $USER_ENVIORNMENT \
+    $IMAGE
+sudo docker rm $DISTRO-$VERSION-$STAMP

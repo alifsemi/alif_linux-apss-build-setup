@@ -173,8 +173,9 @@ running in Windows 11 OS
    $ export HTTPS_PASSWD=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
    Note: This step is needed until the repositories are private.
 
-10.Switch to the /opt directory inside the Ubuntu 18.04 docker containe   and fetch the Yocto layers and Ensemble BSP layers for the build
-   using the fetch-layers.sh.
+10.Switch to the /opt directory inside the Ubuntu 18.04 docker
+   container and fetch the Yocto layers and Ensemble BSP layers
+   for the build using the fetch-layers.sh.
    $ cd /opt
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
@@ -211,6 +212,6 @@ running in Windows 11 OS
    Note: This will delete all the data present inside the container.
    > docker rm ubuntu 
 
-19.Run 'docker rmi apss' from the Windows 11 command prompt to remove
+18.Run 'docker rmi apss' from the Windows 11 command prompt to remove
    already built Ubuntu 18.04 image from the system.
    > docker rmi apss

@@ -23,16 +23,16 @@ for iter in ${REPO_CONFIG} ; do
         SOURCE_NAME=$(echo $URL | grep -o "[^/]*$" | sed "s:\.git::g")
 
         if echo $iter | grep -q "BITBAKE;" ; then
-            if [ -d tools/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
-                pushd tools/${SOURCE_NAME} ; git pull ; popd
+            if [ -d ${TOPDIR}/tools/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
+                pushd ${TOPDIR}/tools/${SOURCE_NAME} ; git pull ; popd
             else
-                git clone ${URL} -b ${BRANCH} tools/${SOURCE_NAME}
+                git clone ${URL} -b ${BRANCH} ${TOPDIR}/tools/${SOURCE_NAME}
             fi
         else
-            if [ -d layers/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
-                pushd layers/${SOURCE_NAME} ; git pull ; popd
+            if [ -d ${TOPDIR}/layers/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
+                pushd ${TOPDIR}/layers/${SOURCE_NAME} ; git pull ; popd
             else
-                git clone ${URL} -b ${BRANCH} layers/${SOURCE_NAME}
+                git clone ${URL} -b ${BRANCH} ${TOPDIR}/layers/${SOURCE_NAME}
             fi
         fi
 done

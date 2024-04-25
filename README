@@ -1,5 +1,4 @@
-The following steps initialize the current directory
-for using repo tool and fetches the repositories
+The following steps fetch the Yocto layers and repositories
 to build Linux images for the APSS (application processing subsystem)
 of the Ensemble E7 series.
 
@@ -75,7 +74,7 @@ I. For building images inside the Ubuntu 18.04 docker container:
 
 II. On a native Linux Ubuntu 18.04 host:
 ----------------------------------------
-1. Clone https://github.com/alifsemi/apss-build-setup repo and
+1. Clone https://github.com/alifsemi/apss-build-setup repository and
    checkout main-next branch.
    $ git clone https://github.com/alifsemi/apss-build-setup -b main-next
    Note: Generate Personal access tokens (classic) from

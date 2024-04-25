@@ -7,11 +7,6 @@ RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib bu
 
 RUN pip3 install pyserial keyboard pylink
 
-# install repo tool
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo
-RUN chmod a+rx /usr/bin/repo
-RUN sed -i "s:/usr/bin/env python$:/usr/bin/env python3:g" /usr/bin/repo
-
 # Generate and set locale
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8

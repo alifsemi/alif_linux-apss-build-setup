@@ -13,7 +13,7 @@ LAYER;https://git.openembedded.org/openembedded-core.git;branch=$OE_BRANCH \
 LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/alifsemi/meta-alif.git;branch=$REL_BRANCH \
 LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/alifsemi/meta-alif-ensemble.git;branch=$REL_BRANCH \
 LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/alifsemi/meta-alif-iot.git;branch=$REL_BRANCH \
-LAYER;https://git.yoctoproject.org/meta-yocto.git;branch=$OE_BRANCH \
+LAYER;https://github.com/lgirdk/meta-yocto.git;branch=$OE_BRANCH \
 LAYER;https://git.openembedded.org/meta-openembedded.git;branch=$OE_BRANCH \
 BITBAKE;https://git.openembedded.org/bitbake.git;branch=$BITBAKE_BRANCH \
 "
@@ -24,7 +24,9 @@ for iter in ${REPO_CONFIG} ; do
 
         if echo $iter | grep -q "BITBAKE;" ; then
             if [ -d ${TOPDIR}/tools/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
-                pushd ${TOPDIR}/tools/${SOURCE_NAME} ; git pull ; popd
+                pushd ${TOPDIR}/tools/${SOURCE_NAME}
+                git fetch ${BRANCH} ${BRANCH}
+                popd
             else
                 git clone ${URL} -b ${BRANCH} ${TOPDIR}/tools/${SOURCE_NAME}
             fi

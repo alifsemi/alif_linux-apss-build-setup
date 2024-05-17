@@ -24,9 +24,7 @@ for iter in ${REPO_CONFIG} ; do
 
         if echo $iter | grep -q "BITBAKE;" ; then
             if [ -d ${TOPDIR}/tools/${SOURCE_NAME} -a "x$1" = "xupdate" ] ; then
-                pushd ${TOPDIR}/tools/${SOURCE_NAME}
-                git fetch ${BRANCH} ${BRANCH}
-                popd
+                pushd ${TOPDIR}/tools/${SOURCE_NAME} ; git pull ; popd
             else
                 git clone ${URL} -b ${BRANCH} ${TOPDIR}/tools/${SOURCE_NAME}
             fi

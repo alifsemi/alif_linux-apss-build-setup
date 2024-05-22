@@ -1,0 +1,5 @@
+#!/bin/bash
+
+CONTAINER_NAME="apss-ubuntu"
+# start the already created container
+sudo docker start -a -i $CONTAINER_NAME

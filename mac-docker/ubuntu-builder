@@ -1,0 +1,20 @@
+#!/bin/bash
+DISTRO="ubuntu"
+VERSION="18.04"
+IMAGE=apss/$DISTRO-builder:v$VERSION
+CONTAINER_NAME="apss-ubuntu"
+ARCH="$(uname -m)"
+USER_ENVIORNMENT="-e LANG=en_US.UTF-8 \
+                 -e DISTRO=$DISTRO \
+                 -e VERSION=$VERSION \
+                 -v /opt:/opt --privileged -v /dev:/dev \
+"
+
+# remove existing $CONTAINER_NAME if needed
+#if sudo docker container ls -a | grep -q $CONTAINER_NAME ; then
+#    sudo docker rm $CONTAINER_NAME
+#fi
+
+sudo docker run -it --platform linux/$ARCH --name $CONTAINER_NAME \
+    $USER_ENVIORNMENT \
+    $IMAGE

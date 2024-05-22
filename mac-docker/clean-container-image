@@ -1,0 +1,15 @@
+#!/bin/bash
+
+CONTAINER_NAME="apss-ubuntu"
+REPOSITORY_NAME="apss/ubuntu-builder"
+TAG_NAME="v18.04"
+
+# remove existing $CONTAINER_NAME
+if sudo docker container ls -a | grep -q $CONTAINER_NAME ; then
+    sudo docker rm $CONTAINER_NAME
+fi
+
+# remove existing $REPOSITORY_NAME
+if sudo docker images -a | grep -q "$REPOSITORY_NAME.*$TAG_NAME" ; then
+    sudo docker rmi $REPOSITORY_NAME:$TAG_NAME -f
+fi

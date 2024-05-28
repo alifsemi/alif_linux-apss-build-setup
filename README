@@ -143,6 +143,8 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    navigating to
    Docker Desktop -> Settings -> Resources -> Advanced -> Virtual disk limit.
    Apply and restart.
+   Note: Click on 'Re-apply configurations' from Docker Desktop dashboard
+   to start Docker Desktop after reboot of Mac host.
 
 4. Replace string 'desktop' with 'osxkeychain' in the ~/.docker/config file.
 

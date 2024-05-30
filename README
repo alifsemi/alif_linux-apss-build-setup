@@ -9,8 +9,8 @@ The Linux images can be built,
  - Inside a Ubuntu 18.04 docker container running in Windows 11 OS.
 ===================================================================
 
-I. Inside a Ubuntu 18.04 docker container running in Linux OS.
----------------------------------------------------------------
+I. Build Linux images inside a native Ubuntu 18.04 host machine
+----------------------------------------------------------------
 1. Clone https://github.com/alifsemi/apss-build-setup repository and
    checkout main-next branch.
    $ git clone https://github.com/alifsemi/apss-build-setup -b main-next
@@ -146,18 +146,21 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    Note: Click on 'Re-apply configurations' from Docker Desktop dashboard
    to start Docker Desktop after reboot of Mac host.
 
-4. Replace string 'desktop' with 'osxkeychain' in the ~/.docker/config file.
+4. Allow write permission to /opt directory of MacOS.
+   % sudo chmod a+w /opt
 
-5. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
+5. Replace string 'desktop' with 'osxkeychain' in the ~/.docker/config file.
+
+6. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
    % cd ./apss-build-setup/mac-docker/
    % ./build-ubuntu-image.sh
 
-6. Run the Ubuntu 18.04 docker image in a new docker container using
+7. Run the Ubuntu 18.04 docker image in a new docker container using
    the ubuntu-builder script.
    % ./ubuntu-builder
 
-7. Export HTTPS_USER and HTTPS_PASSWD with https username and
+8. Export HTTPS_USER and HTTPS_PASSWD with https username and
    password (already generated Personal access tokens (classic)) to clone
    repositories from https://github.com/alifsemi.
    This step is executed inside the docker container.
@@ -166,51 +169,51 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    $ export HTTPS_PASSWD=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
    Note: This step is needed until the repositories are private.
 
-8. Fetch the Yocto layers and Ensemble BSP layers for the build using
+9. Fetch the Yocto layers and Ensemble BSP layers for the build using
    the fetch-layers.sh script.
    This step is executed inside docker container.
    $ cd $HOME/apss-build-setup
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
 
-9. Run scripts/setup.sh to setup environment to build Linux images.
+10.Run scripts/setup.sh to setup environment to build Linux images.
    This step is executed inside the docker container.
    $ source scripts/setup.sh
 
-10.Generate Linux images for the APSS using bitbake.
+11.Generate Linux images for the APSS using bitbake.
    This step is executed inside the docker container.
    $ bitbake alif-tiny-image
 
-11.Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
+12.Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
    alif-tiny-image-devkit-e7.cramfs-xip from the
    tmp/deploy/images/devkit-e7 directory into the /opt directory.
    The images copied to /opt can be accessible from the MacOS.
    Use them for booting.
 
-12.Press Ctrl+D or logout to exit from the Ubuntu 18.04 docker container.
+13.Press Ctrl+D or logout to exit from the Ubuntu 18.04 docker container.
 
-13.Run the run-container script again to jump into the
+14.Run the run-container script again to jump into the
    Ubuntu 18.04 docker container.
    $ ./run-container
 
-14.Use the setup.sh from $HOME/apss-build-setup/build directory
+15.Use the setup.sh from $HOME/apss-build-setup/build directory
    to setup environment to build Linux images again.
    This step is executed inside the docker container.
    $ cd $HOME/apss-build-setup/build
    $ source setup.sh
 
-15.Run 'docker rm apss-ubuntu' from the MacOS command
+16.Run 'docker rm apss-ubuntu' from the MacOS command
    prompt to remove the docker container.
    CAUTION: This will delete all the data present inside the container.
    % docker rm apss-ubuntu
 
-16.Run 'docker rmi apss/ubuntu-builder:v18.04' from the MacOS
+17.Run 'docker rmi apss/ubuntu-builder:v18.04' from the MacOS
    command prompt to remove already built Ubuntu 18.04
    docker image from the system.
    % docker rmi apss/ubuntu-builder:v18.04
    CAUTION: This will delete custom docker image from the MacOS.
 
-17. Run './clean-container-image' from the native Linux OS command
+18. Run './clean-container-image' from the native Linux OS command
     prompt to remove both apss-ubuntu container and apss/ubuntu-builder:v18.04
     docker image.
 

@@ -149,7 +149,8 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
 4. Allow write permission to /opt directory of MacOS.
    % sudo chmod a+w /opt
 
-5. Replace string 'desktop' with 'osxkeychain' in the ~/.docker/config file.
+5. Replace string 'desktop' with 'osxkeychain' in the ~/.docker/config.json
+   file.
 
 6. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).

@@ -11,16 +11,16 @@ The Linux images can be built,
 
 I. Build Linux images inside a native Ubuntu 18.04 host machine
 ----------------------------------------------------------------
-1. Clone https://github.com/alifsemi/alif_apss-build-setup repository.
-   $ git clone https://github.com/alifsemi/alif_apss-build-setup
+1. Clone https://github.com/alifsemi/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/alifsemi/alif_linux-apss-build-setup
 
 2. Run the host_setup.sh script to install required packages to build
    Linux images on the host machine before running bitbake commands.
-   $ sudo alif_apss-build-setup/scripts/host_setup.sh
+   $ sudo alif_linux-apss-build-setup/scripts/host_setup.sh
 
 3. Fetch the Yocto layers and Ensemble BSP layers for the build using
    the fetch-layers.sh script.
-   $ cd alif_apss-build-setup
+   $ cd alif_linux-apss-build-setup
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
 
@@ -44,19 +44,19 @@ II. Build Linux images inside a Ubuntu 18.04 docker container
    For example in the native Ubuntu 20.04 host:
    $ sudo apt install git docker docker.io -y
 
-2. Clone https://github.com/alif_apss-build-setup repository.
-   $ git clone https://github.com/alifsemi/alif_apss-build-setup
+2. Clone https://github.com/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/alifsemi/alif_linux-apss-build-setup
 
 3. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
-   $ ./alif_apss-build-setup/ubuntu-docker/build-ubuntu-image.sh
+   $ ./alif_linux-apss-build-setup/ubuntu-docker/build-ubuntu-image.sh
 
 4. Run the Ubuntu 18.04 docker container using the ubuntu-builder script.
-   $ ./alif_apss-build-setup/ubuntu-docker/ubuntu-builder
+   $ ./alif_linux-apss-build-setup/ubuntu-docker/ubuntu-builder
 
 5. Fetch the Yocto layers and Ensemble BSP layers for the build using
    the fetch-layers.sh script.
-   $ cd alif_apss-build-setup
+   $ cd alif_linux-apss-build-setup
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
 
@@ -74,11 +74,11 @@ II. Build Linux images inside a Ubuntu 18.04 docker container
 
 10. Run the ubuntu-builder script again to jump into the
    Ubuntu 18.04 docker container.
-   $ ./alif_apss-build-setup/ubuntu-docker/ubuntu-builder
+   $ ./alif_linux-apss-build-setup/ubuntu-docker/ubuntu-builder
 
-11.The alif_apss-build-setup directory is shared between the native Linux host
+11.The alif_linux-apss-build-setup directory is shared between the native Linux host
    and the Ubuntu 18.04 docker container. So, all files under
-   the alif_apss-build-setup directory can also be accessible from the native
+   the alif_linux-apss-build-setup directory can also be accessible from the native
    Linux host.
 
 III. Build Linux images inside a Ubuntu 18.04 docker container
@@ -89,8 +89,8 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    https://docs.docker.com/desktop/install/mac-install/ to install
    docker desktop application in MacOS running on Intel chip/Apple Silicon.
 
-2. Clone https://github.com/alifsemi/alif_apss-build-setup repository.
-   % git clone https://github.com/alifsemi/alif_apss-build-setup
+2. Clone https://github.com/alifsemi/alif_linux-apss-build-setup repository.
+   % git clone https://github.com/alifsemi/alif_linux-apss-build-setup
 
 3. Make /opt directory of MacOS shareable with the Ubuntu 18.04
    docker container by navigating to Docker Desktop ->
@@ -111,7 +111,7 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
 
 6. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
-   % cd ./alif_apss-build-setup/mac-docker/
+   % cd ./alif_linux-apss-build-setup/mac-docker/
    % ./build-ubuntu-image.sh
 
 7. Run the Ubuntu 18.04 docker image in a new docker container using
@@ -121,7 +121,7 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
 8. Fetch the Yocto layers and Ensemble BSP layers for the build using
    the fetch-layers.sh script.
    This step is executed inside docker container.
-   $ cd $HOME/alif_apss-build-setup
+   $ cd $HOME/alif_linux-apss-build-setup
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
 
@@ -145,10 +145,10 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    Ubuntu 18.04 docker container.
    $ ./run-container
 
-14.Use the setup.sh from $HOME/alif_apss-build-setup/build directory
+14.Use the setup.sh from $HOME/alif_linux-apss-build-setup/build directory
    to setup environment to build Linux images again.
    This step is executed inside the docker container.
-   $ cd $HOME/alif_apss-build-setup/build
+   $ cd $HOME/alif_linux-apss-build-setup/build
    $ source setup.sh
 
 15.Run 'docker rm apss-ubuntu' from the MacOS command
@@ -186,13 +186,13 @@ IV. Build Linux images inside a Ubuntu 18.04 docker container
 3. Start the Docker Desktop application.
 
 4. Download
-   https://github.com/alifsemi/alif_apss-build-setup/archive/refs/heads/main.zip
-   file and extract the ZIP file to alif_apss-build-setup directory.
+   https://github.com/alifsemi/alif_linux-apss-build-setup/archive/refs/heads/main.zip
+   file and extract the ZIP file to alif_linux-apss-build-setup directory.
 
 5. Run the Command Prompt application in Windows 11.
 
-6. Change to extracted ./alif_apss-build-setup/windows-docker folder.
-   > cd alif_apss-build-setup\windows-docker
+6. Change to extracted ./alif_linux-apss-build-setup/windows-docker folder.
+   > cd alif_linux-apss-build-setup\windows-docker
 
 7. Build docker image containing Ubuntu 18.04 Linux distribution
    using the docker-container-build.bat script. This script downloads
@@ -204,7 +204,7 @@ IV. Build Linux images inside a Ubuntu 18.04 docker container
 
 8. Create and run the Ubuntu 18.04 docker container using
    the docker-container-create.bat script. This script mounts/shares
-   directories and files present in the alif_apss-build-setup directory
+   directories and files present in the alif_linux-apss-build-setup directory
    onto the /opt directory of the docker container.
    > docker-container-create.bat
 

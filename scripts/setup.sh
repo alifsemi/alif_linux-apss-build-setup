@@ -85,9 +85,9 @@ if [ ! -f "conf/auto.conf" ] ; then
        echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemi/linux;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemi/a32_linux_DD_testcases;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
    else
-       echo "TFA_TREE=\"git://github.com/alifsemi/arm-tf;protocol=https\"" >> conf/auto.conf
-       echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemi/linux;protocol=https\"" >> conf/auto.conf
-       echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemi/a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
+       echo "TFA_TREE=\"git://github.com/alifsemi/alif_arm-tf;protocol=https\"" >> conf/auto.conf
+       echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemi/alif_linux;protocol=https\"" >> conf/auto.conf
+       echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemi/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
    fi
 fi
 

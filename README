@@ -11,8 +11,8 @@ The Linux images can be built,
 
 I. Build Linux images inside a native Ubuntu 18.04 host machine
 ----------------------------------------------------------------
-1. Clone https://github.com/alifsemi/alif_linux-apss-build-setup repository.
-   $ git clone https://github.com/alifsemi/alif_linux-apss-build-setup
+1. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
 
 2. Run the host_setup.sh script to install required packages to build
    Linux images on the host machine before running bitbake commands.
@@ -44,8 +44,8 @@ II. Build Linux images inside a Ubuntu 18.04 docker container
    For example in the native Ubuntu 20.04 host:
    $ sudo apt install git docker docker.io -y
 
-2. Clone https://github.com/alif_linux-apss-build-setup repository.
-   $ git clone https://github.com/alifsemi/alif_linux-apss-build-setup
+2. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
 
 3. Fetch the Ubuntu 18.04 docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
@@ -89,8 +89,8 @@ III. Build Linux images inside a Ubuntu 18.04 docker container
    https://docs.docker.com/desktop/install/mac-install/ to install
    docker desktop application in MacOS running on Intel chip/Apple Silicon.
 
-2. Clone https://github.com/alifsemi/alif_linux-apss-build-setup repository.
-   % git clone https://github.com/alifsemi/alif_linux-apss-build-setup
+2. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
+   % git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
 
 3. Make /opt directory of MacOS shareable with the Ubuntu 18.04
    docker container by navigating to Docker Desktop ->
@@ -186,7 +186,7 @@ IV. Build Linux images inside a Ubuntu 18.04 docker container
 3. Start the Docker Desktop application.
 
 4. Download
-   https://github.com/alifsemi/alif_linux-apss-build-setup/archive/refs/heads/main.zip
+   https://github.com/AlifSemiDev/alif_linux-apss-build-setup/archive/refs/heads/main.zip
    file and extract the ZIP file to alif_linux-apss-build-setup directory.
 
 5. Run the Command Prompt application in Windows 11.

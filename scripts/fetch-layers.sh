@@ -10,9 +10,9 @@ BITBAKE_BRANCH="1.44"
 # List of layers used to build images
 REPO_CONFIG=" \
 LAYER;https://git.openembedded.org/openembedded-core.git;branch=$OE_BRANCH \
-LAYER;https://github.com/AlifSemiDev/meta-alif.git;branch=$REL_BRANCH \
-LAYER;https://github.com/AlifSemiDev/meta-alif-ensemble.git;branch=$REL_BRANCH \
-LAYER;https://github.com/AlifSemiDev/meta-alif-iot.git;branch=$REL_BRANCH \
+LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif.git;branch=$REL_BRANCH \
+LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-ensemble.git;branch=$REL_BRANCH \
+LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-iot.git;branch=$REL_BRANCH \
 LAYER;https://github.com/lgirdk/meta-yocto.git;branch=$OE_BRANCH \
 LAYER;https://git.openembedded.org/meta-openembedded.git;branch=$OE_BRANCH \
 BITBAKE;https://git.openembedded.org/bitbake.git;branch=$BITBAKE_BRANCH \

@@ -10,14 +10,15 @@ BITBAKE_BRANCH="1.44"
 # List of layers used to build images
 REPO_CONFIG=" \
 LAYER;https://git.openembedded.org/openembedded-core.git;branch=$OE_BRANCH \
-LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif.git;branch=$REL_BRANCH \
-LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-ensemble.git;branch=$REL_BRANCH \
+LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif.git;branch=$REL_BRANCH;tag=$REL_TAG \
+LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-ensemble.git;branch=$REL_BRANCH;tag=$REL_TAG \
 LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-iot.git;branch=$REL_BRANCH \
 LAYER;https://github.com/lgirdk/meta-yocto.git;branch=$OE_BRANCH \
 LAYER;https://git.openembedded.org/meta-openembedded.git;branch=$OE_BRANCH \
 BITBAKE;https://git.openembedded.org/bitbake.git;branch=$BITBAKE_BRANCH \
 "
 for iter in ${REPO_CONFIG} ; do
+        TAG=$(echo "$iter" | cut -d ";" -f 4 | sed "s:tag=::g")
         BRANCH=$(echo "$iter" | cut -d ";" -f 3 | sed "s:branch=::g")
         URL=$(echo "$iter" | cut -d ";" -f 2)
         SOURCE_NAME=$(echo $URL | grep -o "[^/]*$" | sed "s:\.git::g")
@@ -33,6 +34,11 @@ for iter in ${REPO_CONFIG} ; do
                 pushd ${TOPDIR}/layers/${SOURCE_NAME} ; git pull ; popd
             else
                 git clone ${URL} -b ${BRANCH} ${TOPDIR}/layers/${SOURCE_NAME}
+            fi
+            if [ "$TAG" != "" ] ; then
+                pushd ${TOPDIR}/layers/${SOURCE_NAME} ; git checkout tags/${REL_TAG} ; popd
+            else
+                pushd ${TOPDIR}/layers/${SOURCE_NAME} ; git checkout ${BRANCH} ; popd
             fi
         fi
 done

@@ -89,6 +89,10 @@ if [ ! -f "conf/auto.conf" ] ; then
        echo "ALIF_KERNEL_TREE=\"git://github.com/AlifSemiDev/alif_linux;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/AlifSemiDev/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
    fi
+   if [ "x$REL_TAG" != "" ] ; then
+       echo "SRCREV_pn-linux-alif=\"$REL_TAG\"" >> conf/auto.conf
+       echo "SRCREV_pn-trusted-firmware-a=\"$REL_TAG\"" >> conf/auto.conf
+   fi
 fi
 
 # Temporary waiting for proper bitbake integration: https://patchwork.openembedded.org/patch/144806/

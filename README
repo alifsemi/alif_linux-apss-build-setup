@@ -22,7 +22,10 @@ I. Build Linux images inside a native Ubuntu 18.04 host machine
    the fetch-layers.sh script.
    $ cd alif_linux-apss-build-setup
    $ sh scripts/fetch-layers.sh
-   Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+   Note:
+   1. Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+   2. Export REL_TAG with release tag name to build images from a specific tag.
+      e.g: export REL_TAG=APSS-v0.5.5
 
 4. Run scripts/setup.sh to setup environment to build Linux images.
    $ source scripts/setup.sh

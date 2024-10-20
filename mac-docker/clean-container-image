@@ -2,7 +2,7 @@
 
 CONTAINER_NAME="apss-ubuntu"
 REPOSITORY_NAME="apss/ubuntu-builder"
-TAG_NAME="v18.04"
+TAG_NAME="v22.04"
 
 # remove existing $CONTAINER_NAME
 if sudo docker container ls -a | grep -q $CONTAINER_NAME ; then

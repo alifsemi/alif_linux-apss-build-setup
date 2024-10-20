@@ -1,6 +1,6 @@
 #!/bin/bash
 DISTRO="ubuntu"
-VERSION="18.04"
+VERSION="22.04"
 IMAGE=apss/$DISTRO-builder:v$VERSION
 CONTAINER_NAME="apss-ubuntu"
 ARCH="$(uname -m)"

@@ -8,7 +8,7 @@
 # register username and email
 
 echo ""
-echo "Welcome to Ubuntu 18.04 builder"
+echo "Welcome to Ubuntu 22.04 builder"
 echo ""
 
 echo "export LANG=en_US.UTF-8" > /home/apssbuilder/.bash_profile

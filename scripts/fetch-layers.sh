@@ -3,9 +3,9 @@
 THIS_SCRIPT=$(readlink -f $0)
 TOPDIR=$(dirname $(dirname $THIS_SCRIPT))
 
-OE_BRANCH="zeus"
-REL_BRANCH="devkit-ex-b0"
-BITBAKE_BRANCH="1.44"
+OE_BRANCH="scarthgap"
+REL_BRANCH="scarthgap"
+BITBAKE_BRANCH="2.8"
 
 # List of layers used to build images
 REPO_CONFIG=" \

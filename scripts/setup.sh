@@ -48,7 +48,7 @@ source ${TOPDIR}/layers/openembedded-core/oe-init-build-env ${BUILD_DIR}
 
 # Use custom local.conf from meta-alif
 LOCALCONF="$(readlink -f conf/local.conf)"
-OELOCALSAMPLE="${TOPDIR}/layers/openembedded-core/meta/conf/local.conf.sample"
+OELOCALSAMPLE="${TOPDIR}/layers/openembedded-core/meta/conf/templates/default/local.conf.sample"
 ALIFLOCALSAMPLE="${TOPDIR}/layers/meta-alif-ensemble/conf/local.conf.sample"
 if diff -q $LOCALCONF $OELOCALSAMPLE ; then
    cp -f $ALIFLOCALSAMPLE $LOCALCONF
@@ -59,10 +59,10 @@ unset LOCALCONF OELOCALSAMPLE ALIFLOCALSAMPLE
 LAYERS="meta-alif  \
 meta-alif-ensemble \
 meta-openembedded/meta-oe \
-meta-openembedded/meta-filesystems \
 meta-openembedded/meta-python \
-meta-yocto/meta-poky \
-meta-alif-iot"
+meta-openembedded/meta-networking \
+meta-openembedded/meta-filesystems \
+meta-yocto/meta-poky"
 
 for iter in ${LAYERS} ; do
    if [ ! -f "${BUILD_DIR}/.${iter///}" ] ; then
@@ -78,20 +78,20 @@ if [ ! -f "conf/auto.conf" ] ; then
       echo "SOURCE_MIRROR_URL=\"https://downloads.yoctoproject.org/mirror/sources/\"" >> conf/auto.conf
    fi
    echo "TFA_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
-   echo "ALIF_KERNEL_BRANCH=\"devkit-b0-5.4.y\"" >> conf/auto.conf
+   echo "ALIF_KERNEL_BRANCH=\"alif_v6.11\"" >> conf/auto.conf
    echo "LINUX_DD_TC_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
    if [ "x$HTTPS_USER" != "x" -a "x$HTTPS_PASSWD" != "x" ] ; then
        echo "TFA_TREE=\"git://github.com/alifsemidev/alif_arm-tf;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
-       echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemidev/alif_linux;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
+       echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemidev/linux_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemidev/alif_a32_linux_DD_testcases;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
    else
        echo "TFA_TREE=\"git://github.com/AlifSemiDev/alif_arm-tf;protocol=https\"" >> conf/auto.conf
-       echo "ALIF_KERNEL_TREE=\"git://github.com/AlifSemiDev/alif_linux;protocol=https\"" >> conf/auto.conf
+       echo "ALIF_KERNEL_TREE=\"git://github.com/AlifSemiDev/linux_alif;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/AlifSemiDev/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
    fi
    if [ "x$REL_TAG" != "x" ] ; then
-       echo "SRCREV_pn-linux-alif=\"$REL_TAG\"" >> conf/auto.conf
-       echo "SRCREV_pn-trusted-firmware-a=\"$REL_TAG\"" >> conf/auto.conf
+       echo "SRCREV:pn-linux-alif=\"$REL_TAG\"" >> conf/auto.conf
+       echo "SRCREV:pn-trusted-firmware-a=\"$REL_TAG\"" >> conf/auto.conf
    fi
 fi
 
@@ -103,7 +103,7 @@ if [ "$(readlink -f setup.sh)" = "$(readlink -f $TOPDIR/setup.sh)" ] ; then
    echo "Something went wrong. Exiting to prevent overwritting setup.sh"
    $EXIT 1
 fi
-SCRIPT_RELPATH=$(python -c "from os.path import relpath; print (relpath(\"$TOPDIR\",\"`pwd`\"))")
+SCRIPT_RELPATH=$(python3 -c "from os.path import relpath; print (relpath(\"$TOPDIR\",\"`pwd`\"))")
 cat > setup.sh << EOF
 #!/bin/bash
 if [ -n "\$BASH_SOURCE" ]; then

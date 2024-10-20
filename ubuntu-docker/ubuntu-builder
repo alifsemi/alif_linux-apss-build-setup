@@ -2,7 +2,7 @@
 LOCALHOME=$(echo ~)
 STAMP=$(date +%y%m%d%H%M)
 DISTRO="ubuntu"
-VERSION="18.04"
+VERSION="22.04"
 IMAGE=apss/$DISTRO-builder:v$VERSION
 RELEASEDIR=$(dirname $(readlink -f $0))
 USER_ENVIORNMENT="--hostname $HOSTNAME \

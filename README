@@ -13,6 +13,8 @@ I. Build Linux images inside a native Ubuntu 22.04 host machine
 ----------------------------------------------------------------
 1. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
    $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
+   $ cd alif_linux-apss-build-setup
+   $ git checkout scarthgap_yocto_5.0
 
 2. Run the host_setup.sh script to install required packages to build
    Linux images on the host machine before running bitbake commands.

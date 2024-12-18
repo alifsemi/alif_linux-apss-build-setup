@@ -115,6 +115,7 @@ else
 fi
 PROJECT_DIR=\$(dirname \$(readlink -f \$THIS_SCRIPT))
 cd \$PROJECT_DIR
+export LANG="en_US.UTF-8"
 export BITBAKEDIR=$SCRIPT_RELPATH/tools/bitbake
 source $SCRIPT_RELPATH/layers/openembedded-core/oe-init-build-env \$PROJECT_DIR
 EOF

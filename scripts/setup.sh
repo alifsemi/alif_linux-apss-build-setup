@@ -78,7 +78,7 @@ if [ ! -f "conf/auto.conf" ] ; then
       echo "SOURCE_MIRROR_URL=\"https://downloads.yoctoproject.org/mirror/sources/\"" >> conf/auto.conf
    fi
    echo "TFA_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
-   echo "ALIF_KERNEL_BRANCH=\"alif_v6.11\"" >> conf/auto.conf
+   echo "ALIF_KERNEL_BRANCH=\"master\"" >> conf/auto.conf
    echo "LINUX_DD_TC_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
    if [ "x$HTTPS_USER" != "x" -a "x$HTTPS_PASSWD" != "x" ] ; then
        echo "TFA_TREE=\"git://github.com/alifsemidev/alif_arm-tf;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf

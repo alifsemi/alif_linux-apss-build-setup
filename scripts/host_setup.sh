@@ -21,8 +21,6 @@ sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib b
 
 sudo pip3 install pyserial keyboard pylink
 
-sudo sed -i "s:^Defaults\tsecure_path:#Defaults\tsecure_path:g" /etc/sudoers
-
 sudo locale-gen en_US.UTF-8
 LANG="en_US.UTF-8"
 

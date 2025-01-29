@@ -77,15 +77,15 @@ if [ ! -f "conf/auto.conf" ] ; then
    if [ "x$SOURCE_MIRROR_URL" = "x" ] ; then
       echo "SOURCE_MIRROR_URL=\"https://downloads.yoctoproject.org/mirror/sources/\"" >> conf/auto.conf
    fi
-   echo "TFA_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
-   echo "ALIF_KERNEL_BRANCH=\"master\"" >> conf/auto.conf
+   echo "TFA_BRANCH=\"alif_lts-v2.10.8\"" >> conf/auto.conf
+   echo "ALIF_KERNEL_BRANCH=\"v6.12-dev\"" >> conf/auto.conf
    echo "LINUX_DD_TC_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
    if [ "x$HTTPS_USER" != "x" -a "x$HTTPS_PASSWD" != "x" ] ; then
-       echo "TFA_TREE=\"git://github.com/alifsemidev/alif_arm-tf;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
+       echo "TFA_TREE=\"git://github.com/alifsemidev/trusted-firmware-a_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
        echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemidev/linux_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemidev/alif_a32_linux_DD_testcases;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
    else
-       echo "TFA_TREE=\"git://github.com/AlifSemiDev/alif_arm-tf;protocol=https\"" >> conf/auto.conf
+       echo "TFA_TREE=\"git://github.com/alifsemidev/trusted-firmware-a_alif;protocol=https\"" >> conf/auto.conf
        echo "ALIF_KERNEL_TREE=\"git://github.com/AlifSemiDev/linux_alif;protocol=https\"" >> conf/auto.conf
        echo "LINUX_DD_TC_TREE=\"git://github.com/AlifSemiDev/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
    fi

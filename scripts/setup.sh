@@ -96,7 +96,7 @@ if [ ! -f "conf/auto.conf" ] ; then
 fi
 
 # Temporary waiting for proper bitbake integration: https://patchwork.openembedded.org/patch/144806/
-RELPATH=$(python -c "from os.path import relpath; print (relpath(\"$TOPDIR/layers\",\"$(pwd)\"))")
+#RELPATH=$(python -c "from os.path import relpath; print (relpath(\"$TOPDIR/layers\",\"$(pwd)\"))")
 #sed -i conf/bblayers.conf -e "s,$TOPDIR/layers/,\${TOPDIR}/$RELPATH/,"
 
 if [ "$(readlink -f setup.sh)" = "$(readlink -f $TOPDIR/setup.sh)" ] ; then

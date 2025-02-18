@@ -13,6 +13,8 @@ I. Build Linux images inside a native Ubuntu 22.04 host machine
 ----------------------------------------------------------------
 1. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
    $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
+   $ Username for 'https://github.com': "Your Username in Github"
+   $ Password for 'https://HemanthKumar-AlifSemi@github.com': "Password" 
    $ cd alif_linux-apss-build-setup
    $ git checkout scarthgap_yocto_5.0
 

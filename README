@@ -3,10 +3,10 @@ to build Linux images for the APSS (Application Processor SubSystem)
 of the Ensemble E7 and E5 series.
 
 The Linux images can be built,
- - In a native Linux Ubuntu 22.04 OS.
- - Inside a Ubuntu 22.04 docker container running in Linux OS.
- - Inside a Ubuntu 22.04 docker container running in MacOS.
- - Inside a Ubuntu 22.04 docker container running in Windows 11 OS.
+ - In a native Linux Ubuntu 24.04 OS.
+ - Inside a Ubuntu 24.04 docker container running in Linux OS.
+ - Inside a Ubuntu 24.04 docker container running in MacOS.
+ - Inside a Ubuntu 24.04 docker container running in Windows 11 OS.
 ===================================================================
 
 I. Build Linux images inside a native Ubuntu 22.04 host machine

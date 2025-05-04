@@ -79,7 +79,7 @@ if [ ! -f "conf/auto.conf" ] ; then
    fi
    echo "TFA_BRANCH=\"alif_lts-v2.10.8\"" >> conf/auto.conf
    echo "ALIF_KERNEL_BRANCH=\"v6.12-dev\"" >> conf/auto.conf
-   echo "LINUX_DD_TC_BRANCH=\"devkit-ex-b0\"" >> conf/auto.conf
+   echo "LINUX_DD_TC_BRANCH=\"scarthgap\"" >> conf/auto.conf
    if [ "x$HTTPS_USER" != "x" -a "x$HTTPS_PASSWD" != "x" ] ; then
        echo "TFA_TREE=\"git://github.com/alifsemidev/trusted-firmware-a_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
        echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemidev/linux_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf

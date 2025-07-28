@@ -72,7 +72,7 @@ for iter in ${LAYERS} ; do
 done
 
 if [ ! -f "conf/auto.conf" ] ; then
-   echo "MACHINE=\"devkit-e7\"" > conf/auto.conf
+   echo "MACHINE=\"devkit-e8\"" > conf/auto.conf
    echo "DISTRO=\"apss-tiny\""  >> conf/auto.conf
    if [ "x$SOURCE_MIRROR_URL" = "x" ] ; then
       echo "SOURCE_MIRROR_URL=\"https://downloads.yoctoproject.org/mirror/sources/\"" >> conf/auto.conf

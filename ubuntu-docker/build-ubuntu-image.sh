@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 ABS_DOCKER_DIR=$(dirname $(readlink -f $0))
 DISTRO="ubuntu"
-VERSION="18.04"
+VERSION="22.04"
 IMAGE="apss/$DISTRO-builder:v$VERSION"
 
 # build docker image with the required username

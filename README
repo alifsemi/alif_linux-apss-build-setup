@@ -4,9 +4,9 @@ of the Ensemble E8 and E6 series.
 
 The Linux images can be built,
  - In a native Linux Ubuntu 24.04 OS.
- - Inside a Ubuntu 24.04 docker container running in Linux OS.
- - Inside a Ubuntu 24.04 docker container running in MacOS.
- - Inside a Ubuntu 24.04 docker container running in Windows 11 OS.
+ - Inside a Ubuntu 22.04 Docker container running on Linux OS.
+ - Inside a Ubuntu 22.04 Docker container running on MacOS.
+ - Inside a Ubuntu 22.04 Docker container running in Windows 11 OS.
 ===================================================================
 
 I. Build Linux images inside a native Ubuntu 24.04 host machine
@@ -22,12 +22,11 @@ I. Build Linux images inside a native Ubuntu 24.04 host machine
 
 2. Run the host_setup.sh script to install the required packages to build
    Linux images on the host machine before running bitbake commands.
-   $ sudo alif_linux-apss-build-setup/scripts/host_setup.sh
+   $ sudo ./scripts/host_setup.sh
 
 3. Fetch the Yocto layers and Ensemble BSP layers for the build using
    the fetch-layers.sh script.
-   $ cd alif_linux-apss-build-setup
-   $ sh scripts/fetch-layers.sh
+   $ sh ./scripts/fetch-layers.sh
    Note:
    1. Run 'sh scripts/fetch-layers.sh update' to get the latest changes.
    2. Export REL_TAG with the release tag name to build images from a specific tag.

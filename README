@@ -46,20 +46,20 @@ I. Build Linux images inside a native Ubuntu 24.04 host machine
    alif-tiny-image-devkit-e7.cramfs-xip from the
    tmp/deploy/images/devkit-e7 directory to boot APSS.
 
-II. Build Linux images inside a Ubuntu 24.04 docker container
+II. Build Linux images inside a Ubuntu 24.04 Docker container
     running in Linux OS.
 ----------------------------------------------------------------
-1. Install git, docker, and docker.io packages in the native Linux host.
+1. Install git, Docker, and docker.io packages in the native Linux host.
    Please refer to https://docs.docker.com/engine/install/ to install
    docker application specific to the native Linux host distribution.
 
-   For example in the native Ubuntu 20.04 host:
+   For example, in the native Ubuntu 20.04 host:
    $ sudo apt install git docker docker.io -y
 
 2. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
    $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
 
-3. Fetch the Ubuntu 24.04 docker image and install prerequisite packages
+3. Fetch the Ubuntu 24.04 Docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
    $ ./alif_linux-apss-build-setup/ubuntu-docker/build-ubuntu-image.sh
 
@@ -172,17 +172,17 @@ III. Build Linux images inside a Ubuntu 24.04 Docker container
    command prompt to remove already built Ubuntu 24.04
    docker image from the system.
    % docker rmi apss/ubuntu-builder:v24.04
-   CAUTION: This will delete custom docker image from the MacOS.
+   CAUTION: This will delete the custom Docker image from the MacOS.
 
 17. Run './clean-container-image' from the native Linux OS command
     prompt to remove both apss-ubuntu container and apss/ubuntu-builder:v24.04
     docker image.
 
-IV. Build Linux images inside a Ubuntu 24.04 docker container
+IV. Build Linux images inside a Ubuntu 24.04 Docker container
     running in Windows 11 OS.
 --------------------------------------------------------------
 1. Enable Virtualization Technology in the BIOS.
-   a. Restart the physical computer and press appropriate key to
+   a. Restart the physical computer and press the appropriate key to
       enter BIOS setup before the primary operating system boots up.
    b. Select,
       - "Advanced BIOS features"
@@ -192,49 +192,49 @@ IV. Build Linux images inside a Ubuntu 24.04 docker container
    c. Save and Exit
 
 2. Enable Hyper-V, Virtual Machine Platform, and Windows Subsystem for Linux
-   features from 'Turn Windows features on or off' section.
-   Install Docker Desktop application in Windows 11 OS.
+   features from the 'Turn Windows features on or off' section.
+   Install the Docker Desktop application in Windows 11 OS.
 
 3. Start the Docker Desktop application.
 
 4. Download
    https://github.com/AlifSemiDev/alif_linux-apss-build-setup/archive/refs/heads/main.zip
-   file and extract the ZIP file to alif_linux-apss-build-setup directory.
+   file and extract the ZIP file to the alif_linux-apss-build-setup directory.
 
 5. Run the Command Prompt application in Windows 11.
 
 6. Change to extracted ./alif_linux-apss-build-setup/windows-docker folder.
    > cd alif_linux-apss-build-setup\windows-docker
 
-7. Build docker image containing Ubuntu 24.04 Linux distribution
+7. Build a Docker image containing the Ubuntu 24.04 Linux distribution
    using the docker-container-build.bat script. This script downloads
-   the Ubuntu 24.04 Linux distribution, installs dependent packages
+   the Ubuntu 24.04 Linux distribution, installs the dependent packages
    required to build the APSS Linux images using the bitbake tool.
-   Building Ubuntu 24.04 docker image takes some time as it fetches
+   Building a Ubuntu 24.04 Docker image takes some time as it fetches
    the packages from the internet.
    > docker-container-build.bat
 
-8. Create and run the Ubuntu 24.04 docker container using
+8. Create and run the Ubuntu 24.04 Docker container using
    the docker-container-create.bat script. This script mounts/shares
    directories and files present in the alif_linux-apss-build-setup directory
-   onto the /opt directory of the docker container.
+   onto the /opt directory of the Docker container.
    > docker-container-create.bat
 
-9.Switch to the /opt directory inside the Ubuntu 24.04 docker
+9. Switch to the /opt directory inside the Ubuntu 24.04 Docker
    container and fetch the Yocto layers and Ensemble BSP layers
    for the build using the fetch-layers.sh.
    $ cd /opt
    $ sh scripts/fetch-layers.sh
-   Note: Run 'sh scripts/fetch-layers.sh update' to get latest changes.
+   Note: Run 'sh scripts/fetch-layers.sh update' to get the latest changes.
 
-10.Run the scripts/setup.sh to setup environment to build Linux images.
+10. Run the scripts/setup.sh to set up the environment to build Linux images.
    By default, the project's build directory gets created at $HOME/build.
    $ source scripts/setup.sh
-   Note: Use the following steps to create different project's build
+   Note: Use the following steps to create a different project's build
    directory (build_new) at $HOME/build_new.
    $ source scripts/setup.sh build_new
 
-11.Generate Linux images for the APSS using bitbake.
+11. Generate Linux images for the APSS using bitbake.
    $ bitbake alif-tiny-image
 
 12.Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
@@ -249,16 +249,17 @@ IV. Build Linux images inside a Ubuntu 24.04 docker container
    command prompt to jump into the Ubuntu 24.04 Docker container.
    > docker-container-start.bat
 
-15. Use the setup.sh from $HOME/build directory to setup environment to build
+15. Use the setup.sh from $HOME/build directory to set up the environment to build
    Linux images again.
    $ cd $HOME/build
+   $ sudo ./scripts/host_setup.sh
    $ source setup.sh 
 
 16.Run 'docker rm ubuntu' from the Windows 11 command prompt to remove
-   the docker container.
+   the Docker container.
    Note: This will delete all the data present inside the container.
    > docker rm ubuntu 
 
 17.Run 'docker rmi apss' from the Windows 11 command prompt to remove
-   already built Ubuntu 24.04 image from the system.
+   the already built Ubuntu 24.04 image from the system.
    > docker rmi apss

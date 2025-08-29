@@ -198,7 +198,7 @@ IV. Build Linux images inside a Ubuntu 22.04/later Docker container
 3. Start the Docker Desktop application.
 
 4. Download
-   https://github.com/AlifSemiDev/alif_linux-apss-build-setup/archive/refs/heads/main.zip
+   https://github.com/AlifSemiDev/alif_linux-apss-build-setup/archive/refs/heads/scarthgap_yocto_5.0.zip
    file and extract the ZIP file to the alif_linux-apss-build-setup directory.
 
 5. Run the Command Prompt application in Windows 11.

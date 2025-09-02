@@ -224,6 +224,7 @@ IV. Build Linux images inside a Ubuntu 22.04/later Docker container
    container and fetch the Yocto layers and Ensemble BSP layers
    for the build using the fetch-layers.sh.
    $ cd /opt
+   $ sudo ./scripts/host_setup.sh 
    $ sh scripts/fetch-layers.sh
    Note: Run 'sh scripts/fetch-layers.sh update' to get the latest changes.
 

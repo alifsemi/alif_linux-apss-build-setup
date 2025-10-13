@@ -11,12 +11,8 @@ The Linux images can be built,
 
 I. Build Linux images inside a native Ubuntu 22.04/later host machine
 ----------------------------------------------------------------
-1. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
-   $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
-   $ Username for 'https://github.com': "Your Username in Github"
-   $ Password for 'https://HemanthKumar-AlifSemi@github.com': "Password" 
-   $ export HTTPS_USER="Your Username in Github"
-   $ export HTTPS_PASSWD= "Password"
+1. Clone https://github.com/AlifSemi/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/AlifSemi/alif_linux-apss-build-setup
    $ cd alif_linux-apss-build-setup
    $ git checkout scarthgap_yocto_5.0
 
@@ -42,9 +38,9 @@ I. Build Linux images inside a native Ubuntu 22.04/later host machine
 6. Generate Linux images for the APSS using bitbake.
    $ bitbake alif-tiny-image
 
-6. Use xipImage, bl32.bin, devkit-e7.dtb, and
-   alif-tiny-image-devkit-e7.cramfs-xip from the
-   tmp/deploy/images/devkit-e7 directory to boot APSS.
+6. Use xipImage, bl32.bin, devkit-e8.dtb, and
+   alif-tiny-image-devkit-e8.cramfs-xip from the
+   tmp/deploy/images/devkit-e8 directory to boot APSS.
 
 II. Build Linux images inside a Ubuntu 22.04/later Docker container
     running in Linux OS.
@@ -56,8 +52,10 @@ II. Build Linux images inside a Ubuntu 22.04/later Docker container
    For example, in the native Ubuntu 22.04/later host:
    $ sudo apt install git docker docker.io -y
 
-2. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
-   $ git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
+2. Clone https://github.com/AlifSemi/alif_linux-apss-build-setup repository.
+   $ git clone https://github.com/AlifSemi/alif_linux-apss-build-setup
+   $ cd alif_linux-apss-build-setup
+   $ git checkout scarthgap_yocto_5.0
 
 3. Fetch the Ubuntu 22.04/later Docker image and install prerequisite packages
    using the build-ubuntu-image.sh script (it takes some time to complete).
@@ -78,9 +76,9 @@ II. Build Linux images inside a Ubuntu 22.04/later Docker container
 7. Generate Linux images for the APSS using bitbake.
    $ bitbake alif-tiny-image
 
-8. Use xipImage, bl32.bin, devkit-e7.dtb, and
-   alif-tiny-image-devkit-e7.cramfs-xip from the
-   tmp/deploy/images/devkit-e7 to boot APSS.
+8. Use xipImage, bl32.bin, devkit-e8.dtb, and
+   alif-tiny-image-devkit-e8.cramfs-xip from the
+   tmp/deploy/images/devkit-e8 to boot APSS.
 
 9. Press Ctrl+D or logout to exit from the Ubuntu 24.04 Docker container.
 
@@ -101,8 +99,10 @@ III. Build Linux images inside a Ubuntu 22.04/later Docker container
    https://docs.docker.com/desktop/install/mac-install/ to install
    docker desktop application in macOS running on Intel chip/Apple Silicon.
 
-2. Clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup repository.
-   % git clone https://github.com/AlifSemiDev/alif_linux-apss-build-setup
+2. Clone https://github.com/AlifSemi/alif_linux-apss-build-setup repository.
+   % git clone https://github.com/AlifSemi/alif_linux-apss-build-setup
+   $ cd alif_linux-apss-build-setup
+   $ git checkout scarthgap_yocto_5.0
 
 3. Make /opt directory of MacOS shareable with the Ubuntu 22.04/later
    docker container by navigating to Docker Desktop ->
@@ -145,9 +145,9 @@ III. Build Linux images inside a Ubuntu 22.04/later Docker container
    This step is executed inside the Docker container.
    $ bitbake alif-tiny-image
 
-11. Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
-   alif-tiny-image-devkit-e7.cramfs-xip from the
-   tmp/deploy/images/devkit-e7 directory into the /opt directory.
+11. Copy the generated xipImage, bl32.bin, devkit-e8.dtb, and
+   alif-tiny-image-devkit-e8.cramfs-xip from the
+   tmp/deploy/images/devkit-e8 directory into the /opt directory.
    The images copied to /opt can be accessible from the MacOS.
    Use them for booting.
 
@@ -198,7 +198,7 @@ IV. Build Linux images inside a Ubuntu 22.04/later Docker container
 3. Start the Docker Desktop application.
 
 4. Download
-   https://github.com/AlifSemiDev/alif_linux-apss-build-setup/archive/refs/heads/scarthgap_yocto_5.0.zip
+   https://github.com/AlifSemi/alif_linux-apss-build-setup/archive/refs/heads/scarthgap_yocto_5.0.zip
    file and extract the ZIP file to the alif_linux-apss-build-setup directory.
 
 5. Run the Command Prompt application in Windows 11.
@@ -238,9 +238,9 @@ IV. Build Linux images inside a Ubuntu 22.04/later Docker container
 11. Generate Linux images for the APSS using bitbake.
    $ bitbake alif-tiny-image
 
-12.Copy the generated xipImage, bl32.bin, devkit-e7.dtb, and
-   alif-tiny-image-devkit-e7.cramfs-xip from the
-   tmp/deploy/images/devkit-e7 directory into the /opt directory.
+12.Copy the generated xipImage, bl32.bin, devkit-e8.dtb, and
+   alif-tiny-image-devkit-e8.cramfs-xip from the
+   tmp/deploy/images/devkit-e8 directory into the /opt directory.
    The images copied to /opt can be accessed from Windows 11.
    Use them for booting.
 

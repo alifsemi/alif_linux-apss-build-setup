@@ -80,15 +80,9 @@ if [ ! -f "conf/auto.conf" ] ; then
    echo "TFA_BRANCH=\"alif_lts-v2.10.8\"" >> conf/auto.conf
    echo "ALIF_KERNEL_BRANCH=\"v6.12-dev\"" >> conf/auto.conf
    echo "LINUX_DD_TC_BRANCH=\"scarthgap\"" >> conf/auto.conf
-   if [ "x$HTTPS_USER" != "x" -a "x$HTTPS_PASSWD" != "x" ] ; then
-       echo "TFA_TREE=\"git://github.com/alifsemidev/trusted-firmware-a_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
-       echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemidev/linux_alif;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
-       echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemidev/alif_a32_linux_DD_testcases;user=$HTTPS_USER:$HTTPS_PASSWD;protocol=https\"" >> conf/auto.conf
-   else
-       echo "TFA_TREE=\"git://github.com/alifsemidev/trusted-firmware-a_alif;protocol=https\"" >> conf/auto.conf
-       echo "ALIF_KERNEL_TREE=\"git://github.com/AlifSemiDev/linux_alif;protocol=https\"" >> conf/auto.conf
-       echo "LINUX_DD_TC_TREE=\"git://github.com/AlifSemiDev/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
-   fi
+   echo "TFA_TREE=\"git://github.com/alifsemi/trusted-firmware-a_alif;protocol=https\"" >> conf/auto.conf
+   echo "ALIF_KERNEL_TREE=\"git://github.com/alifsemi/linux_alif;protocol=https\"" >> conf/auto.conf
+   echo "LINUX_DD_TC_TREE=\"git://github.com/alifsemi/alif_a32_linux_DD_testcases;protocol=https\"" >> conf/auto.conf
    if [ "x$REL_TAG" != "x" ] ; then
        echo "SRCREV:pn-linux-alif=\"$REL_TAG\"" >> conf/auto.conf
        echo "SRCREV:pn-trusted-firmware-a=\"$REL_TAG\"" >> conf/auto.conf

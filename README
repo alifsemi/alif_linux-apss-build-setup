@@ -238,7 +238,7 @@ IV. Build Linux images inside a Ubuntu 22.04/later Docker container
 11. Generate Linux images for the APSS using bitbake.
    $ bitbake alif-tiny-image
 
-12.Copy the generated xipImage, bl32.bin, devkit-e8.dtb, and
+12. Copy the generated xipImage, bl32.bin, devkit-e8.dtb, and
    alif-tiny-image-devkit-e8.cramfs-xip from the
    tmp/deploy/images/devkit-e8 directory into the /opt directory.
    The images copied to /opt can be accessed from Windows 11.

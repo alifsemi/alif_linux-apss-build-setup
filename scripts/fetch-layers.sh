@@ -15,6 +15,7 @@ LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-ensembl
 LAYER;https://$HTTPS_USER:$HTTPS_PASSWD@github.com/AlifSemiDev/meta-alif-iot.git;branch=$REL_BRANCH \
 LAYER;https://github.com/lgirdk/meta-yocto.git;branch=$OE_BRANCH \
 LAYER;https://git.openembedded.org/meta-openembedded.git;branch=$OE_BRANCH \
+LAYER;https://git.yoctoproject.org/meta-tensorflow.git;branch=$OE_BRANCH \
 BITBAKE;https://git.openembedded.org/bitbake.git;branch=$BITBAKE_BRANCH \
 "
 for iter in ${REPO_CONFIG} ; do

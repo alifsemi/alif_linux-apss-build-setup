@@ -62,6 +62,7 @@ meta-openembedded/meta-oe \
 meta-openembedded/meta-python \
 meta-openembedded/meta-networking \
 meta-openembedded/meta-filesystems \
+meta-tensorflow \
 meta-yocto/meta-poky"
 
 for iter in ${LAYERS} ; do

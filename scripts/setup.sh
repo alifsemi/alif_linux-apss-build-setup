@@ -60,6 +60,7 @@ LAYERS="meta-alif  \
 meta-alif-ensemble \
 meta-openembedded/meta-oe \
 meta-openembedded/meta-python \
+meta-openembedded/meta-multimedia \
 meta-openembedded/meta-networking \
 meta-openembedded/meta-filesystems \
 meta-tensorflow \
